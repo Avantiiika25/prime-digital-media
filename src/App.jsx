@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
+import FloatingContact from "./components/FloatingContact";
 import ScrollToTop from "./components/ScrollToTop";
 
 // Components
@@ -89,6 +89,7 @@ const App = () => {
           <Route path="/clients" element={<ClientsPage />} />
         </Routes>
 
+         <FloatingContact />
         {/* Footer */}
         <Footer theme={theme} />
 
