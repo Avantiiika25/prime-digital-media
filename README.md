@@ -4,8 +4,8 @@
 A modern, animated, and responsive **AI Agency Landing Page** built with **React (Vite)**, **Tailwind CSS**, and **Framer Motion**.  
 This project demonstrates a sleek UI with smooth animations, optimized performance, and a developer-friendly setup.  
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://agencyai-01.netlify.app/)  
-[![Source Code](https://img.shields.io/badge/💻_Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/amdadislam01/prime_digital_media-landing-page)
+[![Live Demo]()  
+[![Source Code]()
 
 ---
 
