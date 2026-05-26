@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import TeamPage from "./components/TeamPage";
 import ClientsPage from "./components/ClientsPage";
-
+import Portfolio from "./components/Portfolio";
 // Pages
 import Home from "./components/Home";
 
@@ -87,6 +87,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
 
          <FloatingContact />

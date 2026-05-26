@@ -13,7 +13,14 @@ const clients = [
   { logo: assets.l8, name: "Dnyanvardhini Nursing Institute" },
   { logo: assets.l9, name: "GRACE-IN HARMONY WITH NATURE " },
   { logo: assets.l10, name: "PMB education guidance" },
-  { logo: assets.l11, name: "SPEEDWELL EDUSPORTS SCHOOL & JR. COLLEGE" }
+  { logo: assets.l11, name: "SPEEDWELL EDUSPORTS SCHOOL & JR. COLLEGE " },
+  { logo: assets.L12, name: "Deepak Builders & Developers" },
+{ logo: assets.L13, name: "Fravashi International School" },
+{ logo: assets.L14, name: "samraat group " },
+{ logo: assets.L15, name: "Hotel West In (East End) Family Restaurant and Bar" },
+{ logo: assets.L16, name: "Parksyde Homes" },
+{ logo: assets.L17, name: "City Centre Mall, Nashik" },
+
 ];
 
 const typingText =
@@ -155,4 +162,4 @@ const ClientsPage = () => {
   );
 };
 
-export default ClientsPage;
+export default ClientsPage;  

@@ -60,6 +60,13 @@ const featuredTeam = [
     top: "20%",
     left: "25%",
   },
+  {
+    name: "Shubhangi Sonawane",
+    role: "Video Editor",
+    image: assets.m8,
+    top: "20%",
+    left: "25%",
+  },
 ];
 
 const Teams = () => {

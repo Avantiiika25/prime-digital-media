@@ -48,6 +48,12 @@ import l8 from "./l8.jpeg";
 import l9 from "./l9.jpeg";
 import l10 from "./l10.jpeg";
 import l11 from "./l11.jpeg";
+import L12 from "./L12.jpeg";
+import L13 from "./L13.jpeg";
+import L14 from "./L14.jpeg";
+import L15 from "./L15.jpeg";
+import L16 from "./L16.jpeg";
+import L17 from "./L17.jpeg";
 import m1 from "./m1.jpg";
 import m2 from "./m2.jpeg";
 import m3 from "./m3.jpeg";
@@ -56,6 +62,11 @@ import m5 from "./m5.jpeg";
 import m6 from "./m6.jpeg";
 import m7 from "./m7.jpeg";
 import m8 from "./m8.jpeg";
+import smm from "./smm.jpg";
+import v1 from "./v1.mp4";
+import v2 from "./v2.mp4";
+import v3 from "./v3.mp4";
+import v4 from "./v4.mp4";
 import promotable from "./promotable.jpeg";
 import standee from "./standee.jpeg";
 import sunboard_branding from "./sunboard_branding.jpeg";
@@ -130,6 +141,14 @@ promotable,
   l9,
   l10,
   l11,
+  L12,
+  L13,
+  L14,
+  L15,
+  L16,
+  L13,
+  L14,
+  L17,
    m1,
    m2,
    m3,
@@ -138,11 +157,16 @@ promotable,
    m6,
     m7,
   m8,
+  smm,
+  v1,
+  v2,
+  v3,
+  v4,
   
 }
 
 export default assets
-
+{/*}
 export const teamData = [
   { name: 'MD Amdad Islam', title: 'CEO & founder', image: 'https://avatars.githubusercontent.com/u/195456266?v=4' },
   { name: 'Zahidul Islam Mahim', title: 'Ads manager', image: 'https://avatars.githubusercontent.com/u/92626624?v=4' },
@@ -153,3 +177,4 @@ export const teamData = [
   { name: 'Megan Brooks', title: 'Performance manager', image: 'https://randomuser.me/api/portraits/women/12.jpg' },
   { name: 'Amber Foster', title: 'Senior writer', image: 'https://randomuser.me/api/portraits/women/14.jpg' },
 ]
+  */}
