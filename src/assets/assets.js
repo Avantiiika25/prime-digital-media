@@ -44,7 +44,7 @@ import l4 from "./l4.jpeg";
 import l5 from "./l5.jpeg";
 import l6 from "./l6.jpeg";
 import l7 from "./l7.jpeg";
-import l8 from "./l8.jpeg";
+import l8 from "./L8.jpeg";
 import l9 from "./l9.jpeg";
 import l10 from "./l10.jpeg";
 import l11 from "./l11.jpeg";
