@@ -44,10 +44,10 @@ import l4 from "./l4.jpeg";
 import l5 from "./l5.jpeg";
 import l6 from "./l6.jpeg";
 import l7 from "./l7.jpeg";
-import l8 from "./L8.jpeg";
-import l9 from "./l9.jpeg";
-import l10 from "./l10.jpeg";
-import l11 from "./l11.jpeg";
+import L8 from "./L8.jpeg";
+import L9 from "./L9.jpeg";
+import L10 from "./L10.jpeg";
+import L11 from "./L11.jpeg";
 import L12 from "./L12.jpeg";
 import L13 from "./L13.jpeg";
 import L14 from "./L14.jpeg";
@@ -137,10 +137,10 @@ promotable,
   l5,
   l6,
   l7,
-  l8,
-  l9,
-  l10,
-  l11,
+  L8,
+  L9,
+  L10,
+  L11,
   L12,
   L13,
   L14,
