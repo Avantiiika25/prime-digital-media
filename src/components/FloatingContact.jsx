@@ -9,107 +9,115 @@ const FloatingContact = () => {
     const timer = setTimeout(() => {
       setOpen(true);
 
+      // VOICE
       if ("speechSynthesis" in window) {
         const msg = new SpeechSynthesisUtterance(
-          "Hello, welcome to Prime Digital Media."
+          "Hello from Prime Digital."
         );
-        msg.rate = 0.95;
+
+        msg.rate = 1;
         msg.pitch = 1.1;
+        msg.volume = 0.7;
+
         window.speechSynthesis.speak(msg);
       }
-    }, 2500);
+    }, 1800);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-[9999]">
+    <div className="fixed bottom-4 right-4 z-[9999] flex flex-col items-end">
 
-      {/* Popup */}
+      {/* SMALL CHAT POPUP */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.85 }}
+            initial={{ opacity: 0, y: 15, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute bottom-20 right-0 w-[280px] rounded-3xl bg-black/80 backdrop-blur-2xl border border-cyan-400/20 shadow-2xl overflow-hidden"
+            transition={{ duration: 0.4 }}
+            className="mb-3 relative"
           >
-            <div className="p-4">
+            <div className="bg-black/85 backdrop-blur-2xl border border-cyan-400/10 rounded-2xl px-3 py-2 shadow-2xl min-w-[220px]">
 
-              {/* Assistant Header */}
-              <div className="flex items-center gap-3">
+              {/* TOP */}
+              <div className="flex items-center gap-2">
+
+                {/* AVATAR */}
                 <motion.div
                   animate={{
-                    rotate: [0, 8, -8, 0],
+                    rotate: [0, 10, -10, 0],
                   }}
                   transition={{
                     repeat: Infinity,
                     duration: 2,
                   }}
-                  className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-2xl"
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-sm"
                 >
-                  👩🏻‍💼
+                  👩🏻
                 </motion.div>
 
-                <div>
-                  <h3 className="text-white font-semibold text-sm">
+                {/* TEXT */}
+                <div className="flex-1">
+                  <h4 className="text-white text-xs font-semibold">
                     Prime Assistant
-                  </h3>
-                  <p className="text-cyan-400 text-xs">
-                    Online now
+                  </h4>
+
+                  <p className="text-gray-300 text-[11px] leading-tight mt-0.5">
+                    👋 Need help with your business?
                   </p>
                 </div>
               </div>
 
-              {/* Message */}
-              <p className="text-gray-300 text-sm mt-4 leading-relaxed">
-                👋 Hi there!  
-                Need help growing your business online?
-              </p>
+              {/* BUTTONS */}
+              <div className="flex items-center gap-2 mt-3">
 
-              {/* Buttons */}
-              <div className="flex gap-2 mt-4">
                 <a
                   href="https://wa.me/918652705658"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-medium text-center transition"
+                  className="flex-1 h-9 rounded-xl bg-cyan-500 hover:bg-cyan-400 transition flex items-center justify-center gap-2 text-white text-xs font-medium"
                 >
-                  Chat
+                  <FaWhatsapp className="text-sm" />
+                  WhatsApp
                 </a>
 
                 <a
                   href="mailto:contact.primedigitalmedia@gmail.com"
-                  className="w-10 flex items-center justify-center rounded-xl border border-white/10 text-white"
+                  className="w-9 h-9 rounded-xl border border-white/10 hover:bg-white/10 transition flex items-center justify-center text-white"
                 >
-                  <FaEnvelope />
+                  <FaEnvelope className="text-sm" />
                 </a>
               </div>
             </div>
+
+            {/* SMALL POINTER */}
+            <div className="absolute -bottom-2 right-5 w-4 h-4 bg-black rotate-45 border-r border-b border-cyan-400/10"></div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* WhatsApp Floating Button */}
+      {/* FLOATING BUTTON */}
       <motion.a
         href="https://wa.me/918652705658"
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
         animate={{
-          y: [0, -6, 0],
+          y: [0, -4, 0],
         }}
         transition={{
           repeat: Infinity,
-          duration: 2.5,
+          duration: 2.2,
         }}
-        className="relative w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white text-3xl shadow-xl"
+        className="relative w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white text-2xl shadow-[0_0_30px_rgba(34,211,238,0.35)]"
       >
         <FaWhatsapp />
 
-        {/* Ping */}
-        <span className="absolute inset-0 rounded-full border border-cyan-300 animate-ping opacity-30"></span>
+        {/* PING */}
+        <span className="absolute inset-0 rounded-full border border-cyan-300 animate-ping opacity-20"></span>
       </motion.a>
     </div>
   );

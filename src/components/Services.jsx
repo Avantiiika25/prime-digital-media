@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Title from "./Title";
 
 const Services = () => {
+  const [typedText, setTypedText] = useState("");
+
+  const headingText = "Our Premium Digital Services";
+
+  useEffect(() => {
+    let index = 0;
+
+    const interval = setInterval(() => {
+      if (index < headingText.length) {
+        setTypedText(headingText.slice(0, index + 1));
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 65);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const serviceCategories = [
     {
       title: "Commercial Growth Solutions",
@@ -66,126 +84,217 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative px-6 sm:px-12 lg:px-24 xl:px-40 py-32
-      bg-white dark:bg-black text-gray-900 dark:text-white overflow-hidden"
+      className="relative overflow-hidden bg-black py-24 px-5 sm:px-10 lg:px-20 text-white"
     >
-      {/* Background Glow */}
-      <div className="absolute top-20 left-20 w-96 h-96 bg-cyan-500/10 blur-[180px] rounded-full"></div>
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-600/10 blur-[180px] rounded-full"></div>
+      {/* BACKGROUND GLOW */}
+      <div className="absolute top-10 left-10 w-[350px] h-[350px] bg-cyan-500/10 blur-[160px] rounded-full"></div>
 
-      {/* Heading */}
+      <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-blue-600/10 blur-[160px] rounded-full"></div>
+
+      {/* GRID BG */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="w-full h-full bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+      </div>
+
+      {/* HEADING */}
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1 }}
         viewport={{ once: true }}
+        className="relative z-10 text-center"
       >
-        <div className="text-center">
-          <Title
-            title="Our Premium Digital Services"
-            desc="Powerful digital solutions crafted for businesses, political campaigns, real estate and modern brands."
-          />
-        </div>
+        {/* TAG */}
+        <motion.div
+          animate={{
+            y: [0, -6, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 3,
+          }}
+          className="inline-flex items-center px-5 py-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 text-cyan-300 text-sm backdrop-blur-xl mb-7"
+        >
+          PRIME DIGITAL MEDIA
+        </motion.div>
+
+        {/* TITLE */}
+        <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            {typedText}
+          </span>
+
+          <span className="animate-pulse text-cyan-400">|</span>
+        </h2>
+
+        {/* DESC */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto mt-6 text-base md:text-lg text-gray-300 leading-relaxed"
+        >
+          Powerful digital solutions crafted for businesses, political
+          campaigns, real estate and modern brands with cinematic visuals,
+          premium branding and measurable growth strategies.
+        </motion.p>
       </motion.div>
 
-      {/* Services Grid */}
-      <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-10 mt-20">
+      {/* SERVICE BOXES */}
+      <div className="relative z-10 grid lg:grid-cols-2 xl:grid-cols-3 gap-7 mt-20">
         {serviceCategories.map((category, index) => (
           <motion.div
             key={index}
             initial={{
               opacity: 0,
-              y: 60,
+              y: 70,
+              scale: 0.92,
             }}
             whileInView={{
               opacity: 1,
               y: 0,
+              scale: 1,
             }}
             transition={{
-              duration: 0.8,
+              duration: 0.7,
               delay: index * 0.15,
             }}
             viewport={{ once: true }}
             whileHover={{
               y: -12,
-              scale: 1.02,
             }}
-            className="relative overflow-hidden rounded-[32px] group border border-white/10"
+            className="relative group rounded-[28px] overflow-hidden"
           >
-            {/* Background Video */}
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            >
-              <source src={category.video} type="video/mp4" />
-            </video>
+            {/* ANIMATED BORDER */}
+            <motion.div
+              animate={{
+                rotate: 360,
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 8,
+                ease: "linear",
+              }}
+              className="absolute inset-[-2px] rounded-[30px] bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 opacity-70 blur-sm"
+            />
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/75 group-hover:bg-black/65 transition-all duration-500"></div>
-
-            {/* Glow Border */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-transparent blur-2xl"></div>
-
-            {/* Content */}
-            <div className="relative z-10 backdrop-blur-md bg-white/5 p-10 h-full flex flex-col">
-
-              {/* Small Tag */}
-              <div className="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-cyan-300 text-sm mb-6">
-                Premium Services
-              </div>
-
-              {/* Title */}
-              <motion.h3
-                whileHover={{ scale: 1.03 }}
-                className="text-3xl font-bold text-white leading-tight"
-              >
-                {category.title}
-              </motion.h3>
-
-              {/* Subtitle */}
-              <p className="text-gray-300 mt-4 mb-8 leading-relaxed">
-                {category.subtitle}
-              </p>
-
-              {/* Services */}
-              <div className="grid grid-cols-1 gap-4 flex-1">
-                {category.services.map((service, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ x: 8 }}
-                    className="flex items-center gap-3 text-white/90"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
-
-                    <span className="text-sm sm:text-base">
-                      {service}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* CTA */}
+            {/* CARD */}
+            <div className="relative h-full rounded-[28px] overflow-hidden border border-white/10 bg-black/80">
+              
+              {/* FLOATING SHAPES */}
               <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 30px rgba(34,211,238,0.3)",
+                animate={{
+                  rotate: 360,
                 }}
-                whileTap={{ scale: 0.96 }}
-                className="mt-10"
+                transition={{
+                  repeat: Infinity,
+                  duration: 18,
+                  ease: "linear",
+                }}
+                className="absolute -top-10 -right-10 w-28 h-28 border border-cyan-400/10 rounded-full z-0"
+              />
+
+              <motion.div
+                animate={{
+                  rotate: -360,
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 20,
+                  ease: "linear",
+                }}
+                className="absolute -bottom-10 -left-10 w-36 h-36 border border-blue-400/10 rounded-[30px] z-0"
+              />
+
+              {/* VIDEO */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-1000"
               >
-                <Link
-                  to="/portfolio"
-                  className="inline-flex items-center justify-center gap-3
-                  px-8 py-4 rounded-full bg-cyan-500 hover:bg-cyan-400
-                  text-white font-semibold transition-all duration-300 w-full"
+                <source src={category.video} type="video/mp4" />
+              </video>
+
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-black/80 group-hover:bg-black/70 transition duration-500"></div>
+
+              {/* CONTENT */}
+              <div className="relative z-10 p-7 flex flex-col h-full backdrop-blur-md bg-white/[0.03]">
+
+                {/* TAG */}
+                <div className="inline-flex w-fit items-center px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-cyan-300 text-xs mb-5">
+                  Premium Solutions
+                </div>
+
+                {/* TITLE */}
+                <motion.h3
+                  whileHover={{ scale: 1.02 }}
+                  className="text-2xl md:text-3xl font-bold leading-tight"
                 >
-                  Explore Portfolio
-                  <span>→</span>
-                </Link>
-              </motion.div>
+                  <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                    {category.title}
+                  </span>
+                </motion.h3>
+
+                {/* SUBTITLE */}
+                <p className="text-gray-300 mt-4 mb-6 leading-relaxed text-sm md:text-base">
+                  {category.subtitle}
+                </p>
+
+                {/* SERVICES */}
+                <div className="space-y-3 flex-1">
+                  {category.services.map((service, idx) => (
+                    <motion.div
+                      key={idx}
+                      whileHover={{
+                        x: 6,
+                      }}
+                      className="flex items-center gap-3 text-white/90"
+                    >
+                      {/* DOT */}
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.4, 1],
+                          opacity: [0.7, 1, 0.7],
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 2,
+                          delay: idx * 0.08,
+                        }}
+                        className="w-2 h-2 rounded-full bg-cyan-400"
+                      />
+
+                      <span className="text-sm">
+                        {service}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* BUTTON */}
+                <motion.div
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 0 30px rgba(34,211,238,0.25)",
+                  }}
+                  whileTap={{ scale: 0.97 }}
+                  className="mt-8"
+                >
+                  <Link
+                    to="/portfolio"
+                    className="inline-flex items-center justify-center gap-3
+                    px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400
+                    text-white font-semibold transition-all duration-300 w-full"
+                  >
+                    Explore Portfolio
+                    <span>→</span>
+                  </Link>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         ))}

@@ -48,7 +48,7 @@ const App = () => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
     };
-
+document.documentElement.classList.add("dark");
     document.addEventListener("mousemove", handleMouseMove);
 
     const animate = () => {

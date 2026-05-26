@@ -77,10 +77,9 @@ const Navbar = ({ theme, setTheme }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-xl sm:text-2xl font-bold text-black">
-              Prime Digital Media Solutions
-            </h1>
-
+            <span className="hidden sm:block">
+             Prime Digital Media
+              </span>
             <p className="text-cyan-500 text-xs sm:text-sm tracking-wider">
               Strategy • Performance • Growth
             </p>

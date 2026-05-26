@@ -80,6 +80,9 @@ import v1 from "./v1.mp4";
 import v2 from "./v2.mp4";
 import v3 from "./v3.mp4";
 import v4 from "./v4.mp4";
+import h1 from "./h1.mp4";
+import h2 from "./h2.mp4";
+import h3 from "./h3.mp4";
 
 /* Branding Assets */
 import promotable from "./promotable.jpeg";
@@ -194,6 +197,9 @@ const assets = {
 
   /* Company */
   radico,
+  h1,
+h2,
+h3,
 };
 
 export default assets;
