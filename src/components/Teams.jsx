@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
 
@@ -9,63 +9,49 @@ const featuredTeam = [
     role: "Founder & CEO",
     image: assets.m1,
     top: "8%",
-    left: "8%",
-  },
-  {
-    name: "Rehan Kadri",
-    role: "Manager",
-    image: assets.m2,
-    top: "42%",
     left: "12%",
   },
   {
     name: "Divya Gaykar",
     role: "Head of Digital Marketing",
     image: assets.m3,
-    top: "10%",
-    right: "10%",
+    top: "14%",
+    right: "14%",
   },
   {
     name: "Om Sonawane",
     role: "Graphic Designer",
     image: assets.m4,
-    top: "72%",
-    left: "22%",
+    top: "76%",
+    left: "15%",
   },
   {
     name: "Mohit Chaudhry",
     role: "Cinematographer",
     image: assets.m5,
-    top: "32%",
-    right: "22%",
+    top: "38%",
+    right: "24%",
   },
   {
     name: "Netra Kharde",
     role: "Social Media Manager",
     image: assets.m6,
-    top: "72%",
-    right: "12%", 
+    top: "74%",
+    right: "10%",
   },
   {
     name: "Awantika Gondal",
     role: "Website Development Lead",
     image: assets.m7,
-    top: "50%",
-    right: "5%",
-  },
-  {
-    name: "Vedanti Sonawane",
-    role: "Back Office Head",
-    image: assets.m8,
-    top: "20%",
-    left: "25%",
+    top: "48%",
+    left: "4%",
   },
   {
     name: "Shubhangi Sonawane",
     role: "Video Editor",
     image: assets.m8,
-    top: "20%",
-    left: "25%",
+    top: "68%",
+    left: "38%",
   },
 ];
 
@@ -75,73 +61,83 @@ const Teams = () => {
   const [typedName, setTypedName] = useState("");
   const [typedRole, setTypedRole] = useState("");
 
+  // Cycle through team members smoothly
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % featuredTeam.length);
-    }, 3500);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Clean and smooth medium speed typewriter behavior
   useEffect(() => {
     const member = featuredTeam[active];
-
     setTypedName("");
     setTypedRole("");
 
-    let i = 0;
+    let currentName = "";
+    let nameIdx = 0;
+    let roleIdx = 0;
 
     const nameTyping = setInterval(() => {
-      if (i < member.name.length) {
-        setTypedName(member.name.slice(0, i + 1));
-        i++;
+      if (nameIdx < member.name.length) {
+        currentName += member.name[nameIdx];
+        setTypedName(currentName);
+        nameIdx++;
       } else {
         clearInterval(nameTyping);
-
-        let j = 0;
-
+        
+        let currentRole = "";
         const roleTyping = setInterval(() => {
-          if (j < member.role.length) {
-            setTypedRole(member.role.slice(0, j + 1));
-            j++;
+          if (roleIdx < member.role.length) {
+            currentRole += member.role[roleIdx];
+            setTypedRole(currentRole);
+            roleIdx++;
           } else {
             clearInterval(roleTyping);
           }
-        }, 35);
+        }, 25);
       }
-    }, 55);
+    }, 35);
 
-    return () => clearInterval(nameTyping);
+    return () => {
+      clearInterval(nameTyping);
+    };
   }, [active]);
 
   return (
     <section
       id="team"
-      className="relative py-28 px-6 sm:px-12 lg:px-24 overflow-hidden bg-white dark:bg-black text-gray-900 dark:text-white"
+      className="relative py-10 px-4 sm:px-12 lg:px-24 overflow-hidden bg-white dark:bg-black text-gray-900 dark:text-white"
     >
-      {/* Glow Effects */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/10 blur-[140px] rounded-full"></div>
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/10 blur-[140px] rounded-full"></div>
+      {/* Glow Background Elements */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-500/10 blur-[140px] rounded-full pointer-events-none"></div>
 
-      {/* Heading */}
-      <div className="text-center mb-20">
+      {/* Global Header Section */}
+      <div className="text-center mb-6 lg:mb-12 max-w-2xl mx-auto relative z-20">
         <motion.h2
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl sm:text-6xl font-bold"
+          viewport={{ once: true }}
+          className="text-4xl sm:text-6xl font-bold tracking-tight"
         >
           Meet Our
           <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent animate-pulse">
             Creative Minds
           </span>
         </motion.h2>
+        <p className="mt-2 text-sm sm:text-base text-gray-500 dark:text-gray-400 leading-relaxed px-2">
+          Delivering innovative digital strategies that create measurable business growth and lasting brand impact.
+        </p>
       </div>
 
-      <div className="relative h-[650px] max-w-7xl mx-auto">
-        {/* Floating Members */}
+      {/* DESKTOP VIEW LAYOUT (lg screens and above) */}
+      <div className="hidden lg:block relative h-[580px] max-w-7xl mx-auto z-10">
         {featuredTeam.map((member, index) => (
           <motion.div
-            key={index}
+            key={`desktop-${index}`}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
               opacity: active === index ? 1 : 0.45,
@@ -153,11 +149,13 @@ const Teams = () => {
               y: {
                 repeat: Infinity,
                 duration: 4,
+                ease: "easeInOut"
               },
             }}
             whileHover={{
               scale: 1.25,
               rotate: 4,
+              opacity: 1
             }}
             className="absolute cursor-pointer"
             style={{
@@ -167,7 +165,6 @@ const Teams = () => {
             }}
             onMouseEnter={() => setActive(index)}
           >
-            {/* Rotating Ring */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{
@@ -177,43 +174,107 @@ const Teams = () => {
               }}
               className="absolute inset-[-10px] border-2 border-dashed border-cyan-400/40 rounded-full"
             />
-
             <img
               src={member.image}
               alt={member.name}
-              className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-white dark:border-gray-900 shadow-2xl"
+              className="w-28 h-28 rounded-full object-cover border-4 border-white dark:border-gray-900 shadow-2xl"
             />
           </motion.div>
         ))}
 
-        {/* Center Info */}
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center max-w-xl"
-        >
-          <h3 className="text-3xl sm:text-5xl font-bold text-cyan-400">
+        {/* Center content container for desktop */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center max-w-xl w-full px-4">
+          <h3 className="text-3xl sm:text-5xl font-bold text-cyan-400 h-[60px] flex items-center justify-center">
             {typedName}
-            <span className="animate-pulse">|</span>
+            <span className="animate-pulse text-cyan-400 ml-1">|</span>
           </h3>
-
-          <p className="mt-4 text-lg text-blue-500 font-medium">
+          <p className="mt-2 text-lg text-blue-500 font-medium h-[28px]">
             {typedRole}
           </p>
+        </div>
+      </div>
 
-          <p className="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-            Delivering innovative digital strategies that create measurable
-            business growth and lasting brand impact.
-          </p>
+      {/* MOBILE & TABLET RESPONSIVE VIEW LAYOUT (Below lg breakdown) */}
+      <div className="block lg:hidden w-full relative max-w-md mx-auto min-h-[400px] flex flex-col justify-between items-center z-10">
+        
+        {/* Top Edge Ambient Profile Track */}
+        <div className="w-full flex justify-center gap-3 py-1 overflow-x-auto no-scrollbar opacity-60">
+          {featuredTeam.slice(0, 4).map((m, idx) => (
+            <img 
+              key={`top-thumb-${idx}`}
+              onClick={() => setActive(idx)}
+              src={m.image} 
+              className={`w-11 h-11 rounded-full object-cover border-2 transition-all duration-300 ${active === idx ? 'border-cyan-400 scale-110 opacity-100' : 'border-white/10 opacity-50'}`}
+            />
+          ))}
+        </div>
 
-          <button
-            onClick={() => navigate("/team")}
-            className="mt-8 px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-white font-semibold transition hover:scale-105"
-          >
-            Meet Our Full Team →
-          </button>
-        </motion.div>
+        {/* Dynamic Center Stage Area */}
+        <div className="relative my-auto flex flex-col items-center justify-center text-center w-full min-h-[230px]">
+          
+          {/* Static Orbit lines on back */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-44 h-44 rounded-full border border-dashed border-white/5 animate-spin duration-10000" />
+            <div className="absolute w-56 h-56 rounded-full border border-white/[0.02]" />
+          </div>
+
+          {/* Center Active Profile Flash In/Out Wrapper */}
+          <div className="relative h-28 w-28 mb-4 flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`mobile-active-img-${active}`}
+                initial={{ opacity: 0, scale: 0.6, rotate: -15 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.7, rotate: 15 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="absolute z-10"
+              >
+                <div className="absolute inset-[-6px] border border-cyan-400/50 rounded-full animate-ping opacity-30" />
+                <img
+                  src={featuredTeam[active].image}
+                  alt={featuredTeam[active].name}
+                  className="w-24 h-24 rounded-full object-cover border-4 border-zinc-900 shadow-2xl shadow-cyan-500/20"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Typewriter Text fields to contain layout height shifts */}
+          <div className="w-full px-2">
+            <h3 className="text-2xl sm:text-3xl font-bold text-cyan-400 min-h-[36px] flex items-center justify-center tracking-wide">
+              {typedName}
+              <span className="animate-pulse text-cyan-400 ml-0.5">|</span>
+            </h3>
+            <p className="text-sm sm:text-base text-blue-500 font-medium tracking-wide mt-0.5 min-h-[24px]">
+              {typedRole}
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Edge Ambient Profile Track */}
+        <div className="w-full flex justify-center gap-3 py-1 overflow-x-auto no-scrollbar opacity-60">
+          {featuredTeam.slice(4).map((m, idx) => {
+            const calculatedIdx = idx + 4;
+            return (
+              <img 
+                key={`bottom-thumb-${calculatedIdx}`}
+                onClick={() => setActive(calculatedIdx)}
+                src={m.image} 
+                className={`w-11 h-11 rounded-full object-cover border-2 transition-all duration-300 ${active === calculatedIdx ? 'border-cyan-400 scale-110 opacity-100' : 'border-white/10 opacity-50'}`}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Global Primary Footer Navigation Action */}
+      <div className="w-full text-center mt-6 sm:mt-10 relative z-20">
+        <button
+          onClick={() => navigate("/team")}
+          className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-white font-semibold transition-all duration-300 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-400/30 hover:scale-105 active:scale-95"
+        >
+          Meet Our Full Team →
+        </button>
       </div>
     </section>
   );

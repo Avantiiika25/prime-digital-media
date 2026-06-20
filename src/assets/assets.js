@@ -32,15 +32,6 @@ import menu_icon_dark from "./menu_icon_dark.svg";
 import sun_icon from "./sun_icon.svg";
 import moon_icon from "./moon_icon.svg";
 
-/* Work Images */
-import work1 from "./work1.jpeg";
-import work2 from "./work2.jpeg";
-import work3 from "./work3.jpeg";
-import work4 from "./work4.jpeg";
-import work5 from "./work5.jpeg";
-import work6 from "./work6.jpeg";
-import work7 from "./work7.jpeg";
-import work8 from "./work8.jpeg";
 
 /* Logo Projects */
 import l1 from "./l1.jpeg";
@@ -65,7 +56,6 @@ import L18 from "./L18.JPEG";
 
 /* Marketing Images */
 import m1 from "./m1.jpg";
-import m2 from "./m2.jpeg";
 import m3 from "./m3.jpeg";
 import m4 from "./m4.jpeg";
 import m5 from "./m5.jpeg";
@@ -133,15 +123,7 @@ const assets = {
   sun_icon,
   moon_icon,
 
-  /* Work */
-  work1,
-  work2,
-  work3,
-  work4,
-  work5,
-  work6,
-  work7,
-  work8,
+  
 
   /* Branding */
   promotable,
@@ -179,7 +161,7 @@ const assets = {
 
   /* Marketing */
   m1,
-  m2,
+ 
   m3,
   m4,
   m5,
