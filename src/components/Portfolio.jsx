@@ -7,7 +7,7 @@ const portfolioItems = [
     type: "video",
     category: "Cinematic Video",
     title: "Commercial Videography",
-    client: "Rayate Science Academy",
+    client: "Grace Numerology",
     description:
       "High-quality cinematic brand films and promotional video campaigns.",
     video: assets.v1,

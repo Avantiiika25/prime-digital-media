@@ -100,18 +100,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 w-full">
         <div className="max-w-3xl">
 
-          {/* TAG */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-cyan-300 mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-
-            Strategy • Performance • Branding
-          </motion.div>
-
+  
           {/* MAIN TITLE */}
           <motion.h1
             key={current}
